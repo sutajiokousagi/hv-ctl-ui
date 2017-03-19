@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="graph.css">
+    <script src="graph-ui.js"></script>
+    <script src="hv-socket.js"></script>
+    <script src="graph.js"></script>
+    <script src="flotr2.js"></script>
+  </head><body>
+
+    <div id=header class=fixedSimple title="HV control"> <!-- dangling div?-->
+
+    High voltage control interface.
+
+    <div id=modeContainer class=fixed>
+      <a href="#" id=trigger class=button> Trigger </a>
+    </div>
+
+    
+    <div id="graph" style="width:960px; height:600px;"></div>
+
+    <script>
+      ui.init();
+    </script>
+    </div>
+  </body>
+</html>
+

@@ -1,6 +1,10 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <!-- added because chrome keeps on offering to translate to Danish, for some reason...-->
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-language" content="en">
+    
     <link rel="stylesheet" type="text/css" href="graph.css">
     <script src="graph-ui.js"></script>
     <script src="hv-socket.js"></script>
@@ -13,10 +17,27 @@
     High voltage control interface.
 
     <div id=modeContainer class=fixed>
-      <a href="#" id=trigger class=button> Trigger </a>
+      <a href="#" id=trigger class=button> Zap! </a>
+      <a href="#" id=hvon class=button> HV on </a>
     </div>
 
-    
+    Select capacitor:
+    <div id=capContainer class=fixed>
+      <a href="#" id=cap10 class=button> 10uF </a>  <a href="#" id=cap25 class=button> 25uF </a>
+    </div>
+
+    Select resistor:
+    <div id=resContainer class=fixed>
+      <a href="#" id=res1000 class=button> 1k </a> 
+    </div>
+
+    <hr>
+    Set target voltage:
+    <div id=vsetContainer class=fixed>
+      <input type="text" id="hvSet" value="50"> <a href="#" id=setHV class=button> Set HV </a>
+      <p id=hvConfirm class=fixedSimple></p> <p id=hvCurrent class=fixedSimple></p>
+    </div>
+    <hr>
     <div id="graph" style="width:960px; height:600px;"></div>
 
     <script>

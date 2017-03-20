@@ -9,9 +9,11 @@ graph.prototype = {
     draw() {
 	this.grapher = Flotr.draw(this.graphContainer, [ this.data ],
 				  {
-				      xaxis: {  },
-				      yaxis: { max: 1000, min: 0 },
-				      grid: { minorVerticalLines: true }
+				      title: "Last electroporation waveform",
+				      xaxis: { min: 0, max: 1000, title: "ms" },
+				      yaxis: { max: 1000, min: 0, title: "V" },
+				      grid: { minorVerticalLines: true },
+				      mouse: { track: true },
 				  });
 	
     },

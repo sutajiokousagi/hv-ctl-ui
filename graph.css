@@ -137,6 +137,11 @@ body {
     display: flex;
     justify-content: space-around;
 }
+#rcStat {
+    width: 300px; /* XXX center me */
+    display: flex;
+    justify-content: space-around;
+}
 
 
 /* ********** */
@@ -176,3 +181,5 @@ table, td, th {
     display: flex;
     justify-content: space-around;
 }
+
+.highlight{background:yellow;}

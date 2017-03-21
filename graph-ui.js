@@ -39,7 +39,14 @@ var ui = {
 	document.getElementById("hvConfirm").innerHTML = "Input a target (60-1000V).";
 	document.getElementById("hvCurrent").innerHTML = "Connecting to server for current voltage...";
 
-	document.getElementById("r1c1").innerHTML = "X";
+	addTable();
+	
+	document.getElementById("0_0").className = "highlight";
+	selected_row = 0; selected_col = 0;
+	// give 100ms for connection to setup before updating
+	setTimeout(function() {
+	    updateSelection();
+	}, 250);
 	
 	setInterval(function(){ self.wsocket.getHV(); }, 500);
     },
@@ -47,7 +54,7 @@ var ui = {
     onHvButton: function(mode) {
 	this.mode = mode;
 	if( mode == "setHV" ) {
-	    voltage = parseInt(document.getElementById("hvSet").value);
+	    var voltage = parseInt(document.getElementById("hvSet").value);
 	    if( isNaN( voltage ) ) {
 		document.getElementById("hvConfirm").innerHTML = "Not a number.";
 		return;
@@ -138,7 +145,8 @@ var ui = {
         } else {
 	    throw "unknown onModeButton: " + mode;
 	}
-	
-	
+    },
+    setRC: function(row, col) {
+	this.wsocket.setRC(row,col);
     },
 }

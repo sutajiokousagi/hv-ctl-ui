@@ -72,6 +72,9 @@ hvsocket.prototype = {
     getHV: function() {
 	ws.send("hvup");
     },
+    setRC: function(row, col) {
+	ws.send("setRC," + row + "," + col);
+    },
 }
       
 

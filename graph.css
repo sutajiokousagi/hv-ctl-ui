@@ -117,7 +117,7 @@ body {
     text-decoration: underline;
     color: white;
 }
-#modeContainer, #actionContainer {
+#modeContainer, #actionContainer, #capContainer, #resContainer, #setContainer {
     width: 300px; /* XXX center me */
     display: flex;
     justify-content: space-around;

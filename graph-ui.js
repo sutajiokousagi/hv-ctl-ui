@@ -36,10 +36,10 @@ var ui = {
 
 	this.graph.draw();
 
-	document.getElementById("hvConfirm").innerHTML = "Input a target (30-1000V).";
+	document.getElementById("hvConfirm").innerHTML = "Input a target (60-1000V).";
 	document.getElementById("hvCurrent").innerHTML = "Connecting to server for current voltage...";
 
-	setInterval(function(){ self.wsocket.getHV(); }, 1000);
+	setInterval(function(){ self.wsocket.getHV(); }, 500);
     },
 
     onHvButton: function(mode) {
@@ -50,7 +50,7 @@ var ui = {
 		document.getElementById("hvConfirm").innerHTML = "Not a number.";
 		return;
 	    }
-	    if( voltage < 30 ) {
+	    if( voltage < 60 ) {
 		document.getElementById("hvConfirm").innerHTML = "Target too low.";
 		return;
 	    }
@@ -68,7 +68,18 @@ var ui = {
 
 	// light up the button
 	if( mode == "trigger" ) {
-	    this.triggerButton.setAttribute("selected", "");
+	    if( this.triggerButton.getAttribute("trigger") == "true" )
+		return;
+
+	    var delta = Math.abs(this.wsocket.curv - parseFloat(document.getElementById("hvSet").value));
+	    if( delta > 6.0 ) {
+		// maybe include feedback that the trigger isn't ready yet
+		document.getElementById("hvErr").innerHTML = "Last zap aborted: HV cap still charging!";
+		return;
+	    } else {
+		document.getElementById("hvErr").innerHTML = "";
+	    }
+	    this.triggerButton.setAttribute("selected", "true");
 	} else if( mode == "hvon" ) {
 	    if( this.hvonButton.getAttribute("selected") == "true" ) {
 		this.hvonButton.removeAttribute("selected");
@@ -125,5 +136,7 @@ var ui = {
         } else {
 	    throw "unknown onModeButton: " + mode;
 	}
+	
+	
     },
 }

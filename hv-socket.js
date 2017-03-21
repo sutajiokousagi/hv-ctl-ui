@@ -9,7 +9,8 @@ function hvsocket(graphRef) {
 	    self.graph.updateData(self.data);
 	} else if (evt.data.substring(0,4) == "hvup" ) {
 	    var hval = evt.data.split(",");
-	    document.getElementById("hvCurrent").innerHTML = "Actual voltage: " + parseFloat(hval[1]).toFixed(2) + "V";
+	    self.curv = parseFloat(hval[1]).toFixed(2);
+	    document.getElementById("hvCurrent").innerHTML = "Actual voltage: " + self.curv + "V";
 	} else {
 	    var hvarray = evt.data.split("#");
 	    hvarray.forEach(function(e) {
@@ -29,7 +30,8 @@ hvsocket.prototype = {
     ws: null,
     data: [],
     graph: null,
-    MAX_POINTS: 22000,
+    MAX_POINTS: 10000,
+    curv: 0.0,
 
     sendTrigger: function() {
 	this.data = [];

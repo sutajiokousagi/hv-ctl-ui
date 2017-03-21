@@ -8,6 +8,9 @@ var ui = {
 	this.hvonButton = document.getElementById("hvon");
 	this.cap10Button = document.getElementById("cap10");
 	this.cap25Button = document.getElementById("cap25");
+	this.res300Button = document.getElementById("res300");
+	this.res620Button = document.getElementById("res620");
+	this.res750Button = document.getElementById("res750");
 	this.res1000Button = document.getElementById("res1000");
 	this.sethvButton = document.getElementById("setHV");
 
@@ -25,6 +28,12 @@ var ui = {
 					  function(e) { self.onModeButton("cap10"); e.preventDefault(); });
 	this.cap25Button.addEventListener("click",
 					  function(e) { self.onModeButton("cap25"); e.preventDefault(); });
+	this.res300Button.addEventListener("click",
+					   function(e) { self.onModeButton("res300"); e.preventDefault(); });
+	this.res620Button.addEventListener("click",
+					   function(e) { self.onModeButton("res620"); e.preventDefault(); });
+	this.res750Button.addEventListener("click",
+					   function(e) { self.onModeButton("res750"); e.preventDefault(); });
 	this.res1000Button.addEventListener("click",
 					    function(e) { self.onModeButton("res1000"); e.preventDefault(); });
 	this.sethvButton.addEventListener("click",
@@ -38,6 +47,7 @@ var ui = {
 
 	document.getElementById("hvConfirm").innerHTML = "Input a target (60-1000V).";
 	document.getElementById("hvCurrent").innerHTML = "Connecting to server for current voltage...";
+	document.getElementById("timeconst").innerHTML = "Waiting for zap command to compute tau...";
 
 	addTable();
 	
@@ -81,7 +91,7 @@ var ui = {
 		return;
 
 	    var delta = Math.abs(this.wsocket.curv - parseFloat(document.getElementById("hvSet").value));
-	    if( delta > 6.0 ) {
+	    if( delta > 7.0 ) {
 		// maybe include feedback that the trigger isn't ready yet
 		document.getElementById("hvErr").innerHTML = "Last zap aborted: HV cap still charging!";
 		return;
@@ -106,6 +116,24 @@ var ui = {
 		this.cap25Button.removeAttribute("selected");
 	    } else {
 		this.cap25Button.setAttribute("selected", "true");
+	    }
+	} else if( mode == "res300" ) {
+	    if( this.res300Button.getAttribute("selected") == "true" ) {
+		this.res300Button.removeAttribute("selected");
+	    } else {
+		this.res300Button.setAttribute("selected", "true");
+	    }
+	} else if( mode == "res620" ) {
+	    if( this.res620Button.getAttribute("selected") == "true" ) {
+		this.res620Button.removeAttribute("selected");
+	    } else {
+		this.res620Button.setAttribute("selected", "true");
+	    }
+	} else if( mode == "res750" ) {
+	    if( this.res750Button.getAttribute("selected") == "true" ) {
+		this.res750Button.removeAttribute("selected");
+	    } else {
+		this.res750Button.setAttribute("selected", "true");
 	    }
 	} else if( mode == "res1000" ) {
 	    if( this.res1000Button.getAttribute("selected") == "true" ) {
@@ -135,6 +163,24 @@ var ui = {
 		this.wsocket.setCap25(true);
 	    } else {
 		this.wsocket.setCap25(false);
+	    }
+        } else if( mode == "res300" ) {
+	    if( this.res300Button.getAttribute("selected") == "true" ) {
+		this.wsocket.setRes300(true);
+	    } else {
+		this.wsocket.setRes300(false);
+	    }
+        } else if( mode == "res620" ) {
+	    if( this.res620Button.getAttribute("selected") == "true" ) {
+		this.wsocket.setRes620(true);
+	    } else {
+		this.wsocket.setRes620(false);
+	    }
+        } else if( mode == "res750" ) {
+	    if( this.res750Button.getAttribute("selected") == "true" ) {
+		this.wsocket.setRes750(true);
+	    } else {
+		this.wsocket.setRes750(false);
 	    }
         } else if( mode == "res1000" ) {
 	    if( this.res1000Button.getAttribute("selected") == "true" ) {

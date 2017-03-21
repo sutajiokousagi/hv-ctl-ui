@@ -29,6 +29,9 @@
     
     Select resistor:
     <div id=resContainer class=fixed>
+      <a href="#" id=res300 class=button> 300 </a> 
+      <a href="#" id=res620 class=button> 620 </a> 
+      <a href="#" id=res750 class=button> 750 </a> 
       <a href="#" id=res1000 class=button> 1k </a> 
     </div>
 
@@ -41,7 +44,7 @@
       <input type="text" id="hvSet" value="60"> <a href="#" id=setHV class=button> Set HV </a>
       <p id=hvConfirm class=fixedSimple></p> <p id=hvCurrent class=fixedSimple></p>
     </div><hr>
-    <div id="graph" style="width:960px; height:600px;"></div>
+    <p id=timeconst class=fixedSimple></p><div id="graph" style="width:900px; height:550px;"></div> 
     <script>
       ui.init();
     </script>

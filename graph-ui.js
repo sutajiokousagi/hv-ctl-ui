@@ -39,6 +39,8 @@ var ui = {
 	document.getElementById("hvConfirm").innerHTML = "Input a target (60-1000V).";
 	document.getElementById("hvCurrent").innerHTML = "Connecting to server for current voltage...";
 
+	document.getElementById("r1c1").innerHTML = "X";
+	
 	setInterval(function(){ self.wsocket.getHV(); }, 500);
     },
 

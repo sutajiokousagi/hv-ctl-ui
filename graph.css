@@ -42,6 +42,8 @@ body {
 .fixed {
     white-space: pre;
     font-family: FixedSys, monospace;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 /* FixedSys only has basic ASCII, mixing with fallback causes
  * alignment issues due to differing character widths.
@@ -58,6 +60,9 @@ body {
 .fixedSimple {
     white-space: pre;
     font-family: monospace;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 100%;
 }
 
 .checkbox, .radio {
@@ -117,7 +122,17 @@ body {
     text-decoration: underline;
     color: white;
 }
-#modeContainer, #actionContainer, #capContainer, #resContainer, #setContainer {
+#modeContainer {
+    width: 300px; /* XXX center me */
+    display: flex;
+    justify-content: space-around;
+}
+#capContainer {
+    width: 300px; /* XXX center me */
+    display: flex;
+    justify-content: space-around;
+}
+#resContainer {
     width: 300px; /* XXX center me */
     display: flex;
     justify-content: space-around;
@@ -144,4 +159,20 @@ body {
     color: white;
     background-color: black;
     font-family: FixedSys, monospace;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid white;
+    width: 200px;
+    height: 35px;
+    text-align: center;
+}
+#tableContainer {
+    width: 400px; /* XXX center me */
+    display: flex;
+    justify-content: space-around;
 }

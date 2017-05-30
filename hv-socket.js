@@ -1,7 +1,7 @@
 function hvsocket(graphRef) {
     this.graph = graphRef;
     // ws = new WebSocket("ws://127.0.0.1:8080");
-    ws = new WebSocket("ws://hv-dev1.local:8080");
+    ws = new WebSocket("ws://hv-dev2.local:8080", "rust-websocket");
 
     var self = this;
     ws.onmessage = function(evt) {

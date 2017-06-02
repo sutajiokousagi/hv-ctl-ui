@@ -7,15 +7,19 @@ graph.prototype = {
     data: [],
     tauv: 0.0,
     tau: 0.0,
+    maxv: 300,
 
     draw() {
-	var tauline = [ [0, this.tauv], [300, this.tauv] ];
-	var tautime = [ [this.tau, 0], [this.tau, 300] ];
+	maxv = parseInt(document.getElementById("hvSet").value);
+	maxv = (Math.trunc((maxv - 1) / 100) + 1) * 100;
+
+	var tauline = [ [0, this.tauv], [maxv, this.tauv] ];
+	var tautime = [ [this.tau, 0], [this.tau, maxv] ];
 /*	this.grapher = Flotr.draw(this.graphContainer, [ this.data ],
 				  {
 				      title: "Last electroporation waveform",
-				      xaxis: { min: 0, max: 300, title: "ms" },
-				      yaxis: { max: 300, min: 0, title: "V" },
+				      xaxis: { min: 0, max: maxv, title: "ms" },
+				      yaxis: { max: maxv, min: 0, title: "V" },
 				      grid: { minorVerticalLines: true },
 				      mouse: { track: true },
 				  });*/
@@ -26,8 +30,8 @@ graph.prototype = {
 				  ],
 				      { 
 					 title: "Last electroporation waveform",
-					 xaxis: { min: 0, max: 300, title: "ms" },
-					 yaxis: { max: 300, min: 0, title: "V" },
+					 xaxis: { min: 0, max: maxv, title: "ms" },
+					 yaxis: { max: maxv, min: 0, title: "V" },
 					 grid: { minorVerticalLines: true },
 					 mouse: { track: true },
 				      });
